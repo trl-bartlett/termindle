@@ -10,4 +10,5 @@ guess the 5 letter word in 6 turns or less.
 
 made in python.
 
-![image](https://github.com/trl-bartlett/termindle-new/assets/165054241/2a3aee37-0269-4847-abbb-f21a819991a3)
+![image](https://github.com/trl-bartlett/termindle-new/assets/165054241/cff6c523-f5f0-421b-9ab4-28e111412192)
+
