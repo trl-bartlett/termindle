@@ -14,7 +14,13 @@ by @trl-bartlett
 print(ascii_title)
 
 # list of 5 letter words
-word_vault = ["apple", "brave", "charm"]
+word_vault = ["apple", "brave", "charm", "delta",
+              "eagle", "frost", "glyph", "honey",
+              "ivory", "joker", "knack", "lunar",
+              "mango", "noble", "oasis", "prism",
+              "quilt", "raven", "sheep", "thief",
+              "umbra", "vivid", "waltz", "xenon",
+              "yacht", "zesty"]
 
 # get a random word
 random_word = random.choice(word_vault)
@@ -47,17 +53,27 @@ while not game_end and attempts_left > 0:
         for i in range(len(random_word)):
             if user_guess[i] == random_word[i]:
                 display_word[i] = random_word[i].upper()
-    
+
+    # check for correct letters in incorrect positions
+    correct_letters_wrong_position = [letter for letter in user_guess if letter in random_word and letter != random_word[user_guess.index(letter)]]
+
     # sort and format the used letters
     sorted_used_letters = sorted(used_letters)
     formatted_used_letters = ", ".join(sorted_used_letters)
-    print(f"\nused letters: {formatted_used_letters}")
-    
-    attempts_left -= 1
-    print(f"attempts left: {attempts_left}\n")
-    
+
     # print current state of letters guessed
     print(" ".join(display_word))
+
+    # print used letters
+    print(f"\nused letters: {formatted_used_letters}")
+
+    # tell user that there are letter(s) from their guess that are in the word, but in the wrong place
+    if correct_letters_wrong_position:
+        print(f"letters {', '.join(correct_letters_wrong_position).upper()} are in the word but in the wrong position.")
+
+    # print attempts left
+    attempts_left -= 1
+    print(f"attempts left: {attempts_left}\n")
 
     # check if the word is completely guessed
     if "_" not in display_word:
@@ -65,6 +81,6 @@ while not game_end and attempts_left > 0:
 
 # print win or lose message
 if game_end:
-    print("\nyou got the word!")
+    print(f"\nyou got the word! it was {random_word}")
 else:
     print(f"game over! the word was '{random_word.upper()}'.")
